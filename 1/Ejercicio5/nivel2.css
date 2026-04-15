@@ -1,0 +1,42 @@
+body {
+    background: #dcdcdc;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* espacio distribuido en la pag */
+.espacio {
+    padding: 15px;
+}
+
+/* TARJETAS */
+.apartado {
+    background: #efefef;
+    border-left: 6px solid #5b8db8;
+    padding: 30px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* titulo */
+.apartado h3 {
+    margin: 5px 0;
+    font-size: 20px;
+}
+
+/* texto chico */
+.apartado p {
+    margin: 0;
+    color: #646464;
+    font-size: 14px;
+}
+
+/* etiquetas */
+.etiqueta {
+    position: absolute;
+    top: 7px;
+    background: #5b8db8;
+    color: white;
+    font-size: 12px;
+    padding: 4px 10px;
+}
