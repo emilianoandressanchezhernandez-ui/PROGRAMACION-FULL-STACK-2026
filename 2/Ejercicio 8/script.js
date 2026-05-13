@@ -1,198 +1,390 @@
-// 1. BANCO DE DATOS: 15 NIVELES ALEATORIOS
+// 1. BANCO DE DATOS: 15 NIVELES X 5 OPCIONES (Dificultad Progresiva)
 const levelPool = [
-    [{p:"CLAVE", h:"Contraseña básica."}, {p:"LLAVE", h:"Herramienta de acceso."}],
-    [{p:"REDES", h:"Nodos interconectados."}, {p:"DATOS", h:"Unidades de información."}],
-    [{p:"BANCO", h:"Entidad financiera objetivo."}, {p:"CIFRA", h:"Número o código secreto."}],
-    [{p:"LOGIN", h:"Puerta de entrada."}, {p:"ADMIN", h:"Usuario con privilegios."}],
-    [{p:"BOVEDA", h:"Caja fuerte blindada."}, {p:"TESORO", h:"El botín del servidor."}],
-    [{p:"NUCLEO", h:"El corazón del sistema."}, {p:"KERNEL", h:"Capa baja del software."}],
-    [{p:"CODIGO", h:"Instrucciones lógicas."}, {p:"FUENTE", h:"Origen del software."}],
-    [{p:"ESCUDO", h:"Defensa del firewall."}, {p:"ENLACE", h:"Conexión entre servidores."}],
-    [{p:"BINARIO", h:"Base de la computación."}, {p:"LOGICA", h:"Razonamiento de máquina."}],
-    [{p:"PIRATA", h:"Navegante de la red."}, {p:"HACKER", h:"Experto en intrusión."}],
-    [{p:"MATRIZ", h:"Realidad simulada."}, {p:"ORIGEN", h:"Punto de inicio del rastro."}],
-    [{p:"SOMBRA", h:"Infiltrado sin rastro."}, {p:"SIGILO", h:"Acción sin ser detectado."}],
-    [{p:"PUENTE", h:"Salto entre redes locales."}, {p:"TUNEL", h:"Canal de datos privado."}],
-    [{p:"VIRTUAL", h:"Existencia no física."}, {p:"ESPEJO", h:"Servidor de respaldo."}],
-    [{p:"LIBERTAD", h:"El fin del protocolo."}, {p:"ENIGMA", h:"El misterio resuelto."}]
+    { // Nivel 1: 3-4 letras
+        words: [
+            {p:"WEB", h:"Sitio de internet."}, {p:"LINK", h:"Un enlace azul."}, {p:"WIFI", h:"Internet sin cables."},
+            {p:"CHAT", h:"Donde escribes mensajes."}, {p:"RED", h:"Conexión de computadoras."}
+        ]
+    },
+    { // Nivel 2
+        words: [
+            {p:"URL", h:"La dirección de una web."}, {p:"USER", h:"Nombre de quien usa la PC."}, {p:"PC", h:"Computadora personal."},
+            {p:"APP", h:"Aplicación de celular."}, {p:"PDF", h:"Un formato de documento."}
+        ]
+    },
+    { // Nivel 3: 5 letras
+        words: [
+            {p:"MOUSE", h:"Se usa para hacer clic."}, {p:"CABLE", h:"Conecta la PC a la corriente."}, {p:"TECLA", h:"Parte del teclado."},
+            {p:"BOTON", h:"Lo presionas en la pantalla."}, {p:"PLACA", h:"Circuito verde interno."}
+        ]
+    },
+    { // Nivel 4
+        words: [
+            {p:"EMAIL", h:"Correo electrónico."}, {p:"DISCO", h:"Donde se guarda todo."}, {p:"ICONO", h:"Dibujito de un programa."},
+            {p:"CHIP", h:"Cerebro minúsculo."}, {p:"MOVIL", h:"Teléfono celular."}
+        ]
+    },
+    { // Nivel 5: 6 letras
+        words: [
+            {p:"MODEM", h:"El aparato del internet."}, {p:"GOOGLE", h:"El buscador más usado."}, {p:"CLAVE", h:"Tu contraseña secreta."},
+            {p:"DATOS", h:"Información guardada."}, {p:"FIBRA", h:"Internet muy rápido."}
+        ]
+    },
+    { // Nivel 6: 6-7 letras
+        words: [
+            {p:"HACKER", h:"Experto en sistemas."}, {p:"VIRUS", h:"Programa que daña la PC."}, {p:"CODIGO", h:"Escritura de programas."},
+            {p:"SONIDO", h:"Lo que sale por los parlantes."}, {p:"PUERTO", h:"Donde conectas el USB."}
+        ]
+    },
+    { // Nivel 7
+        words: [
+            {p:"MONITOR", h:"La pantalla de la PC."}, {p:"TECLADO", h:"Sirve para escribir."}, {p:"CARPETA", h:"Guarda muchos archivos."},
+            {p:"VENTANA", h:"Cuadro donde abre un programa."}, {p:"MEMORIA", h:"Guarda cosas temporalmente."}
+        ]
+    },
+    { // Nivel 8: 7-8 letras
+        words: [
+            {p:"SISTEMA", h:"Windows o Android son un..."}, {p:"DIGITAL", h:"Lo opuesto a lo analógico."}, {p:"MENSAJE", h:"Texto que envías."},
+            {p:"BATERIA", h:"Energía de la laptop."}, {p:"CAMARA", h:"Sirve para videollamadas."}
+        ]
+    },
+    { // Nivel 9
+        words: [
+            {p:"SOFTWARE", h:"La parte que no puedes tocar."}, {p:"HARDWARE", h:"La parte física de la PC."}, {p:"PROGRAMA", h:"Word, Chrome o Spotify."},
+            {p:"INTERNET", h:"La red mundial."}, {p:"ARCHIVO", h:"Un solo documento guardado."}
+        ]
+    },
+    { // Nivel 10: 8-9 letras
+        words: [
+            {p:"FIREWALL", h:"Muro que protege la red."}, {p:"SERVIDOR", h:"PC que da datos a otras."}, {p:"CONEXION", h:"Estar unido a la red."},
+            {p:"PANTALLA", h:"Donde miras los videos."}, {p:"DESCARGA", h:"Bajar algo de internet."}
+        ]
+    },
+    { // Nivel 11: Conceptos intermedios
+        words: [
+            {p:"BUSCADOR", h:"Sirve para encontrar webs."}, {p:"TERMINAL", h:"Pantalla negra con letras."}, {p:"COMANDO", h:"Orden que le das a la PC."},
+            {p:"CONSOLA", h:"Donde juegan videojuegos."}, {p:"NAVEGADOR", h:"Chrome, Safari o Edge."}
+        ]
+    },
+    { // Nivel 12
+        words: [
+            {p:"PROCESO", h:"Tarea que hace la PC."}, {p:"ALGORITMO", h:"Pasos para resolver algo."}, {p:"HISTORIAL", h:"Lista de webs visitadas."},
+            {p:"FAVORITO", h:"Web que guardas para volver."}, {p:"PESTAÑA", h:"Varias webs en una ventana."}
+        ]
+    },
+    { // Nivel 13: 10+ letras
+        words: [
+            {p:"TECNOLOGIA", h:"Ciencia aplicada a la PC."}, {p:"INFORMATICA", h:"Estudio de la información."}, {p:"CONTRASEÑA", h:"Palabra secreta de acceso."},
+            {p:"INCOGNITO", h:"Navegar sin dejar rastro."}, {p:"PRIVACIDAD", h:"Protección de tus datos."}
+        ]
+    },
+    { // Nivel 14
+        words: [
+            {p:"INTELIGENCIA", h:"Capacidad de procesar datos."}, {p:"PROGRAMACION", h:"Crear software con código."}, {p:"CIBERSEGURIDAD", h:"Protección contra hackers."},
+            {p:"INSTALACION", h:"Poner un programa nuevo."}, {p:"ACTUALIZAR", h:"Poner la versión más nueva."}
+        ]
+    },
+    { // Nivel 15: El Enigma Final
+        words: [
+            {p:"ARTIFICIAL", h:"No es natural, es..."}, {p:"ENCRIPTADO", h:"Código oculto y secreto."}, {p:"REVOLUCION", h:"Cambio total tecnológico."},
+            {p:"EXPERIENCIA", h:"Lo que ganas al jugar."}, {p:"LIBERTAD", h:"Has vencido al sistema."}
+        ]
+    }
 ];
 
-// 2. MOTOR DE SONIDO (Web Audio API)
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-function playSound(freq, type, duration, vol = 0.1) {
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    osc.type = type;
-    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-    gain.gain.setValueAtTime(vol, audioCtx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-    osc.start();
-    osc.stop(audioCtx.currentTime + duration);
-}
+// 2. BANCO DE DATOS FASE 2 (Voz)
+const voiceWords = ["SERVIDOR", "PROTOCOLO", "ALGORITMO", "TERMINAL", "SOFTWARE", "BINARIO", "INTERFAZ", "SEGURIDAD", "PANTALLA", "INTERNET"];
 
-const sfx = {
-    type: () => playSound(800, 'square', 0.05, 0.05),
-    success: () => { playSound(600, 'sine', 0.2); setTimeout(()=>playSound(800, 'sine', 0.3), 100); },
-    error: () => { playSound(150, 'sawtooth', 0.4, 0.2); },
-    cmd: () => playSound(1200, 'sine', 0.1, 0.05),
-    victory: () => { [440, 554, 659, 880].forEach((f, i) => setTimeout(()=>playSound(f, 'triangle', 0.5), i*150)); }
-};
-
-// 3. ESTADO DEL JUEGO
+// ESTADO GLOBAL
 let currentLevel = 0;
+let voiceIndex = 0;
 let attempts = 5;
 let timeLeft = 60;
 let activePass = "";
 let timerInterval;
-const SYMBOLS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
+let isVoicePhase = false;
 
-const elements = {
-    intro: document.getElementById('intro-screen'),
+// ELEMENTOS
+const el = {
     game: document.getElementById('game-screen'),
-    start: document.getElementById('start-mission'),
+    voice: document.getElementById('voice-screen'),
     scramble: document.getElementById('scramble-text'),
     hint: document.getElementById('hint-box'),
-    level: document.getElementById('level-counter'),
-    timer: document.getElementById('timer'),
     input: document.getElementById('terminal-input'),
-    submit: document.getElementById('submit-btn'),
     feedback: document.getElementById('feedback'),
-    meter: document.getElementById('detection-meter'),
-    fail: document.getElementById('fail-overlay')
+    vWord: document.getElementById('voice-word'),
+    vFeedback: document.getElementById('voice-feedback'),
+    vProgress: document.getElementById('voice-progress'),
+    vTimer: document.getElementById('voice-timer')
 };
 
-// 4. LÓGICA
-elements.start.addEventListener('click', () => {
+// MOTOR DE AUDIO
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+function playSfx(f, d, type='sine') {
+    const osc = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
+    osc.type = type; osc.frequency.value = f;
+    g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + d);
+    osc.connect(g); g.connect(audioCtx.destination);
+    osc.start(); osc.stop(audioCtx.currentTime + d);
+}
+
+// INICIO
+document.getElementById('start-mission').addEventListener('click', () => {
     audioCtx.resume();
-    elements.intro.classList.add('d-none');
-    elements.game.classList.remove('d-none');
+    document.getElementById('intro-screen').classList.add('d-none');
+    el.game.classList.remove('d-none');
     updateDetectionUI();
     loadLevel();
     startTimer();
-    sfx.success();
 });
 
 function startTimer() {
-    if (timerInterval) clearInterval(timerInterval);
+    if(timerInterval) clearInterval(timerInterval);
     timerInterval = setInterval(() => {
         timeLeft--;
-        updateTimerDisplay();
-        if (timeLeft <= 0) triggerGameOver();
+        if(!isVoicePhase) document.getElementById('timer').innerText = `00:${String(timeLeft).padStart(2, '0')}`;
+        else el.vTimer.innerText = `${timeLeft}s`;
+        if(timeLeft <= 0) gameOver();
     }, 1000);
 }
 
-function updateTimerDisplay() {
-    let m = Math.floor(timeLeft / 60);
-    let s = timeLeft % 60;
-    elements.timer.innerText = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
-    if (timeLeft < 15) elements.timer.classList.add('text-warning');
-    else elements.timer.classList.remove('text-warning');
-}
-
 function loadLevel() {
-    elements.feedback.innerText = "";
-    if (currentLevel < levelPool.length) {
-        timeLeft = 60; // Reinicio de tiempo por nivel
-        updateTimerDisplay();
-        
-        const pool = levelPool[currentLevel];
-        const selection = pool[Math.floor(Math.random() * pool.length)];
-        activePass = selection.p;
-        
-        elements.level.innerText = `CAPA: ${String(currentLevel + 1).padStart(2, '0')}/15`;
-        elements.hint.innerText = `Pista: ${selection.h}`;
-        runScramble(activePass.length);
-        elements.input.value = "";
-        elements.input.focus();
-    } else {
-        victory();
+    // BUG FIX: Limpiar mensaje de feedback al pasar de nivel
+    el.feedback.innerText = "";
+    
+    if(currentLevel >= 15) {
+        initVoicePhase();
+        return;
     }
+    const pool = levelPool[currentLevel].words;
+    const select = pool[Math.floor(Math.random() * pool.length)];
+    activePass = select.p;
+    document.getElementById('level-counter').innerText = `NIVEL: ${String(currentLevel+1).padStart(2, '0')}/15`;
+    el.hint.innerText = `PISTA: ${select.h}`;
+    runScrambleEffect(activePass);
+    timeLeft = 60;
 }
 
-function runScramble(len) {
-    let i = 0;
+function runScrambleEffect(word) {
+    let iterations = 0;
     const interval = setInterval(() => {
-        let res = "";
-        for(let j=0; j<len; j++) res += SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
-        elements.scramble.innerText = res;
-        i++;
-        if(i > 10) clearInterval(interval);
-    }, 60);
+        el.scramble.innerText = word.split('').sort(() => Math.random() - 0.5).join('');
+        if(++iterations > 8) clearInterval(interval);
+    }, 70);
 }
 
 function validate() {
-    const val = elements.input.value.toUpperCase().trim();
-    
-    // COMANDOS OCULTOS
-    if (val === "FREEZE") {
-        clearInterval(timerInterval);
-        sfx.cmd();
-        elements.feedback.innerText = "CRONO CONGELADO 10S";
-        setTimeout(startTimer, 10000);
-        elements.input.value = ""; return;
-    }
-    if (val === "BYPASS") {
-        attempts--;
-        sfx.error();
-        updateDetectionUI();
+    const val = el.input.value.toUpperCase().trim();
+    if(val === activePass) {
+        playSfx(880, 0.3);
         currentLevel++;
-        loadLevel();
+        el.feedback.innerText = "SISTEMA VULNERADO";
+        el.feedback.style.color = "var(--neon-green)";
+        setTimeout(loadLevel, 800); // El loadLevel ahora limpia este mensaje
+    } else {
+        playSfx(150, 0.4, 'sawtooth');
+        attempts--;
+        timeLeft -= 10;
+        updateDetectionUI();
+        el.feedback.innerText = "ANOMALÍA: -10 SEG";
+        el.feedback.style.color = "red";
+        if(attempts <= 0) gameOver();
+    }
+    el.input.value = "";
+}
+
+// FASE DE VOZ
+function initVoicePhase() {
+    isVoicePhase = true;
+    timeLeft = 30;
+    el.game.classList.add('d-none');
+    el.voice.classList.remove('d-none');
+    loadVoiceWord();
+}
+
+function loadVoiceWord() {
+    el.vFeedback.innerText = "";
+    if(voiceIndex >= 10) {
+        alert("¡BASE DE DATOS EXTRAÍDA CON ÉXITO!");
+        location.reload();
         return;
     }
-    if (val === "DECRYPT") {
-        timeLeft -= 15;
-        sfx.cmd();
-        elements.feedback.innerText = `INIT: ${activePass[0]} / END: ${activePass.slice(-1)}`;
-        elements.input.value = ""; return;
-    }
+    el.vWord.innerText = voiceWords[voiceIndex];
+    el.vProgress.innerText = `PALABRAS: ${voiceIndex} / 10`;
+    startVoiceRecognition();
+}
 
-    // LÓGICA NORMAL
-    if (val === activePass) {
-        sfx.success();
-        elements.feedback.innerText = "ACCESO PERMITIDO";
-        elements.feedback.style.color = "var(--neon-green)";
-        currentLevel++;
-        setTimeout(loadLevel, 800);
-    } else {
-        attempts--;
-        timeLeft -= 10; // PENALIZACIÓN DE TIEMPO
-        sfx.error();
-        updateDetectionUI();
-        updateTimerDisplay();
-        elements.feedback.innerText = "ANOMALÍA DETECTADA: -10s";
-        elements.feedback.style.color = "#ff3131";
-        if (attempts <= 0) triggerGameOver();
-    }
-    elements.input.value = "";
+function startVoiceRecognition() {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'es-ES';
+    recognition.start();
+
+    recognition.onresult = (event) => {
+        const result = event.results[0][0].transcript.toUpperCase();
+        if(result.includes(voiceWords[voiceIndex])) {
+            playSfx(1000, 0.3);
+            el.vFeedback.innerText = "✓ FRECUENCIA CORRECTA";
+            el.vFeedback.style.color = "var(--neon-green)";
+            voiceIndex++;
+            setTimeout(loadVoiceWord, 1000);
+        } else {
+            playSfx(200, 0.5, 'sawtooth');
+            attempts--;
+            timeLeft = Math.max(0, timeLeft - 5);
+            el.vFeedback.innerText = "✗ ERROR DE AUDIO: -5s";
+            el.vFeedback.style.color = "red";
+            updateDetectionUI();
+            if(attempts <= 0) gameOver();
+            else setTimeout(loadVoiceWord, 1000);
+        }
+    };
 }
 
 function updateDetectionUI() {
-    elements.meter.innerHTML = "";
-    for(let i=0; i<attempts; i++) {
-        elements.meter.innerHTML += '<i class="fa-solid fa-triangle-exclamation"></i>';
+    const meter = document.getElementById('detection-meter');
+    meter.innerHTML = "";
+    for(let i=0; i<attempts; i++) meter.innerHTML += '<i class="fa-solid fa-triangle-exclamation mx-1"></i>';
+}
+
+function gameOver() {
+    clearInterval(timerInterval);
+    document.getElementById('fail-overlay').classList.remove('d-none');
+    setTimeout(() => location.reload(), 3000);
+}
+
+document.getElementById('submit-btn').addEventListener('click', validate);
+el.input.addEventListener('keypress', (e) => { if(e.key === 'Enter') validate(); });
+
+// ... (Mantener bancos de datos anteriores)
+
+// CONFIGURACIÓN FASE 3
+const cableColors = ['cable-red', 'cable-blue', 'cable-yellow', 'cable-green', 'cable-purple'];
+let selectedNode = null;
+let connectionsMade = 0;
+let isPanelPhase = false;
+
+// ELEMENTOS NUEVOS
+const elPanel = {
+    screen: document.getElementById('panel-screen'),
+    left: document.getElementById('left-nodes'),
+    right: document.getElementById('right-nodes'),
+    feedback: document.getElementById('panel-feedback'),
+    timer: document.getElementById('panel-timer')
+};
+
+// --- ACTUALIZACIÓN FASE VOZ (REINICIO TIEMPO) ---
+function loadVoiceWord() {
+    el.vFeedback.innerText = "";
+    if(voiceIndex >= 10) {
+        initPanelPhase(); // Salto a la nueva fase
+        return;
+    }
+    timeLeft = 30; // REINICIO DE TIEMPO POR PALABRA CORRECTA
+    el.vWord.innerText = voiceWords[voiceIndex];
+    el.vProgress.innerText = `PALABRAS: ${voiceIndex} / 10`;
+    startVoiceRecognition();
+}
+
+// --- FASE 3: PANEL ELÉCTRICO ---
+function initPanelPhase() {
+    isVoicePhase = false;
+    isPanelPhase = true;
+    timeLeft = 45;
+    el.voice.classList.add('d-none');
+    elPanel.screen.classList.remove('d-none');
+    setupCables();
+}
+
+function setupCables() {
+    elPanel.left.innerHTML = "";
+    elPanel.right.innerHTML = "";
+    connectionsMade = 0;
+    
+    // Crear nodos izquierda (ordenados)
+    const leftOrder = [...cableColors];
+    // Crear nodos derecha (desordenados)
+    const rightOrder = [...cableColors].sort(() => Math.random() - 0.5);
+
+    leftOrder.forEach(color => {
+        const div = document.createElement('div');
+        div.className = `node node-left ${color}`;
+        div.dataset.color = color;
+        div.onclick = () => handleNodeClick(div, 'left');
+        elPanel.left.appendChild(div);
+    });
+
+    rightOrder.forEach(color => {
+        const div = document.createElement('div');
+        div.className = `node node-right ${color}`;
+        div.dataset.color = color;
+        div.onclick = () => handleNodeClick(div, 'right');
+        elPanel.right.appendChild(div);
+    });
+}
+
+function handleNodeClick(node, side) {
+    if(node.classList.contains('connected')) return;
+    playSfx(600, 0.1);
+
+    if (!selectedNode) {
+        selectedNode = { node, side, color: node.dataset.color };
+        node.classList.add('selected');
+    } else {
+        // Si clickea en el mismo lado, cambia la selección
+        if (selectedNode.side === side) {
+            selectedNode.node.classList.remove('selected');
+            selectedNode = { node, side, color: node.dataset.color };
+            node.classList.add('selected');
+        } 
+        // Si clickea en el lado opuesto, intentamos conectar
+        else {
+            if (selectedNode.color === node.dataset.color) {
+                // ÉXITO
+                playSfx(1000, 0.2);
+                node.classList.add('connected');
+                selectedNode.node.classList.add('connected');
+                selectedNode.node.classList.remove('selected');
+                connectionsMade++;
+                elPanel.feedback.innerText = "CIRCUITO CERRADO";
+                elPanel.feedback.className = "text-success mt-5 h-25px fw-bold";
+                
+                if(connectionsMade === cableColors.length) {
+                    setTimeout(victory, 1000);
+                }
+            } else {
+                // FALLO
+                playSfx(150, 0.4, 'sawtooth');
+                attempts--;
+                timeLeft -= 5;
+                elPanel.feedback.innerText = "CORTOCIRCUITO: -5s";
+                elPanel.feedback.className = "text-danger mt-5 h-25px fw-bold";
+                updateDetectionUI();
+                selectedNode.node.classList.remove('selected');
+                if(attempts <= 0) gameOver();
+            }
+            selectedNode = null;
+        }
     }
 }
 
-function triggerGameOver() {
-    clearInterval(timerInterval);
-    sfx.error();
-    elements.fail.classList.remove('d-none');
-    setTimeout(() => location.reload(), 4000);
+// ACTUALIZAR EL TIMER PARA INCLUIR LA FASE 3
+// (Modifica tu función startTimer existente para manejar el nuevo span de tiempo)
+function updateTimerDisplay() {
+    if(isPanelPhase) {
+        elPanel.timer.innerText = `${timeLeft}s`;
+    }
+    // ... resto de lógica de timers
 }
 
 function victory() {
     clearInterval(timerInterval);
-    sfx.victory();
-    elements.scramble.innerText = "ACCESO_TOTAL";
-    elements.hint.innerText = "BÓVEDA VACIADA. SALIENDO SIN RASTRO.";
-    elements.input.classList.add('d-none');
-    elements.submit.classList.add('d-none');
+    playSfx(1200, 0.5);
+    elPanel.screen.innerHTML = `
+        <div class="text-center p-5">
+            <h1 class="text-neon display-3 mb-4">INFILTRACIÓN COMPLETA</h1>
+            <p class="text-white">TODOS LOS DATOS HAN SIDO EXSTRAÍDOS.</p>
+            <button onclick="location.reload()" class="btn btn-outline-neon mt-4">REINICIAR SISTEMA</button>
+        </div>
+    `;
 }
-
-elements.submit.addEventListener('click', validate);
-elements.input.addEventListener('keypress', (e) => { 
-    sfx.type();
-    if(e.key === 'Enter') validate(); 
-});

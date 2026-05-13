@@ -14,80 +14,121 @@
 <div class="scanlines"></div>
 
 <div id="intro-screen" class="container-fluid d-flex align-items-center justify-content-center min-vh-100">
-    <div class="slide-container text-center p-5 border-neon shadow-neon">
-        <h1 class="display-2 fw-bold text-neon mb-3">PROTOCOLO ENIGMA</h1>
-        <h3 class="text-white opacity-75 mb-5">Consola de Intrusión Avanzada v5.0</h3>
-        
-        <div class="instructions-box text-start mx-auto mb-5 p-4 bg-dark-soft border-neon-dim">
-            <h5 class="text-neon mb-3"><i class="fa-solid fa-terminal me-2"></i>PROTOCOLO DE OPERACIÓN:</h5>
+    <div class="slide-container text-center p-5 border-neon shadow-neon w-100 mx-3" style="max-width: 800px;">
+        <h1 class="display-3 fw-bold text-neon mb-3 glitch-text">PROTOCOLO ENIGMA</h1>
+        <div class="instructions-box text-start mb-5 p-4 bg-dark-soft border-neon-dim">
+            <h5 class="text-neon mb-3"><i class="fa-solid fa-terminal me-2"></i>REGLAS DEL SISTEMA:</h5>
             <ul class="text-white small list-unstyled">
-                <li class="mb-2"><i class="fa-solid fa-chevron-right text-neon me-2"></i>Decodifique los 15 niveles de seguridad.</li>
-                <li class="mb-2"><i class="fa-solid fa-chevron-right text-neon me-2"></i>Dispone de 60s por nivel. El éxito reinicia el reloj.</li>
-                <li class="mb-2"><i class="fa-solid fa-chevron-right text-neon me-2"></i>Cada error consume 1 intento y resta 10s de su tiempo actual.</li>
-                <li class="mb-2"><i class="fa-solid fa-chevron-right text-neon me-2"></i>Límite de anomalías permitidas: 5 detecciones.</li>
+                <li class="mb-2"><i class="fa-solid fa-chevron-right text-neon me-2"></i>Supera 15 niveles de encriptación.</li>
+                <li class="mb-2"><i class="fa-solid fa-chevron-right text-neon me-2"></i>Tienes 60s por nivel. El tiempo se reinicia al acertar.</li>
+                <li class="mb-2"><i class="fa-solid fa-chevron-right text-neon me-2"></i>Error = -10 segundos y alerta de seguridad.</li>
+                <li class="mb-2"><i class="fa-solid fa-chevron-right text-neon me-2"></i>Máximo 5 alertas permitidas.</li>
+                <li class="mb-2"><i class="fa-solid fa-chevron-right text-neon me-2"></i>Fase 1: 15 niveles de encriptación (60s).</li>
+                <li class="mb-2"><i class="fa-solid fa-chevron-right text-neon me-2"></i>Fase 2: Autenticación por Voz (30s).</li>
+                <li class="mb-2"><i class="fa-solid fa-chevron-right text-neon me-2"></i>Fase 3: Panel Eléctrico (45s).</li>
             </ul>
         </div>
-        
-        <button id="start-mission" class="btn btn-outline-neon btn-lg px-5 py-3 fw-bold">
-            ESTABLECER CONEXIÓN
-        </button>
+        <button id="start-mission" class="btn btn-outline-neon btn-lg px-5 py-3 fw-bold">INICIAR HACKEO</button>
     </div>
 </div>
 
-<div id="game-screen" class="container-fluid py-5 d-none">
+<div id="game-screen" class="container-fluid py-4 d-none">
     <div class="row justify-content-center g-4">
-        
-        <div class="col-lg-3">
-            <div class="status-panel p-4 border-neon h-100 shadow-neon">
-                <h6 class="text-neon-dim border-bottom border-neon-dim pb-2 mb-4">ESTADO DEL PERÍMETRO</h6>
-                
-                <div class="mb-5">
-                    <p class="small text-white mb-1">TIEMPO PARA DESCONEXIÓN:</p>
+        <div class="col-lg-3 col-md-4">
+            <div class="status-panel p-4 border-neon shadow-neon h-100">
+                <h6 class="text-neon-dim border-bottom border-neon-dim pb-2 mb-4">SEGURIDAD</h6>
+                <div class="mb-4">
+                    <p class="x-small text-white mb-1">RASTREO:</p>
                     <div id="timer" class="display-5 fw-bold text-danger">01:00</div>
                 </div>
-
-                <div class="mb-5">
-                    <p class="small text-white mb-1">INTENTOS DE SEGURIDAD (IDS):</p>
-                    <div id="detection-meter" class="fs-4 text-warning d-flex flex-wrap gap-1">
-                        </div>
-                </div>
-
-                <div class="manual-footer text-neon-dim x-small mt-auto">
-                    <p>SISTEMA: ENIGMA_v5.0<br>UBICACIÓN: [REDACTADO]<br>AUDIOPROCESSOR: ACTIVE</p>
+                <div class="mb-4">
+                    <p class="x-small text-white mb-1">DETECCIONES (IDS):</p>
+                    <div id="detection-meter" class="fs-4 text-warning d-flex flex-wrap gap-1"></div>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-7">
-            <div class="terminal-container p-5 border-neon shadow-lg position-relative">
-                <div class="terminal-header d-flex justify-content-between mb-4 border-bottom border-neon-dim pb-2">
-                    <span id="level-counter" class="fw-bold">CAPA: 01/15</span>
-                    <span class="text-neon-dim"><i class="fa-solid fa-wifi me-1"></i> ENCRIPTACIÓN_ACTIVA</span>
-                </div>
-
+        <div class="col-lg-7 col-md-8">
+            <div class="terminal-container p-4 p-md-5 border-neon shadow-lg position-relative">
+                <div id="level-counter" class="fw-bold mb-3 small">NIVEL: 01/15</div>
                 <div class="display-main text-center py-5 bg-dark-soft border-neon-dim rounded mb-4">
-                    <div id="scramble-text" class="display-1 fw-bold text-neon mb-3">----</div>
-                    <p id="hint-box" class="text-info fw-bold">Esperando sincronización...</p>
+                    <div id="scramble-text" class="responsive-txt fw-bold text-neon mb-3">----</div>
+                    <p id="hint-box" class="text-info fw-bold small px-2">Analizando...</p>
                 </div>
-
                 <div class="input-wrapper">
-                    <div class="input-group input-group-lg">
-                        <span class="input-group-text bg-transparent border-neon text-neon">></span>
-                        <input type="text" id="terminal-input" class="form-control bg-transparent text-neon border-neon shadow-none" placeholder="INSERTAR CLAVE..." autocomplete="off">
-                        <button id="submit-btn" class="btn btn-outline-neon px-4 fw-bold">EJECUTAR</button>
+                    <div class="input-group">
+                        <input type="text" id="terminal-input" class="form-control bg-transparent text-neon border-neon shadow-none" placeholder="CLAVE..." autocomplete="off">
+                        <button id="submit-btn" class="btn btn-outline-neon fw-bold">OK</button>
                     </div>
                     <div id="feedback" class="mt-3 text-center small fw-bold h-25px"></div>
                 </div>
-
                 <div id="fail-overlay" class="reboot-overlay d-none">
-                    <div class="text-center">
-                        <h1 class="text-danger fw-bold display-3 mb-3">SISTEMA COMPROMETIDO</h1>
-                        <p class="text-white">CONEXIÓN FINALIZADA POR EL HOST.</p>
-                    </div>
+                    <h2 class="text-danger">SISTEMA BLOQUEADO</h2>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<div id="phase2-screen" class="container-fluid py-5 d-none">
+    <div class="text-center slide-container p-5 border-neon shadow-neon mx-auto" style="max-width: 800px;">
+        <h2 class="display-4 text-neon mb-4">¡ACCESO TOTAL CONCEDIDO!</h2>
+        <p class="text-white mb-5">Has vulnerado todas las capas. Ahora debemos extraer los datos confidenciales.</p>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <button id="minigame-match-btn" class="btn btn-outline-info w-100 py-3">MINIJUEGO: UNIR PUERTOS</button>
+            </div>
+            <div class="col-md-6">
+                <button id="minigame-voice-btn" class="btn btn-outline-warning w-100 py-3">AUTENTICACIÓN POR VOZ</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="voice-screen" class="container d-none py-5">
+    <div class="voice-window mx-auto border-neon shadow-neon p-4 p-md-5 bg-dark-soft">
+        <div class="window-header border-bottom border-neon-dim mb-4 d-flex justify-content-between">
+            <span class="text-neon fw-bold small">VOICE_AUTH_0x99</span>
+            <span class="text-danger fw-bold small" id="voice-timer">30s</span>
+        </div>
+        <div class="text-center">
+            <h2 class="text-white mb-2">ESCANEO DE FRECUENCIA</h2>
+            <p class="text-info small mb-5">Hable claramente al micrófono cuando el círculo pulse.</p>
+            
+            <div class="voice-visualizer mb-5">
+                <div class="pulse-circle" id="voice-pulse"></div>
+                <div id="voice-word" class="display-4 fw-bold text-neon">CARGANDO...</div>
+            </div>
+
+            <div id="voice-feedback" class="h-25px fw-bold mb-4"></div>
+            <div id="voice-progress" class="small text-white-50">PALABRAS: 0 / 10</div>
+        </div>
+    </div>
+</div>
+
+<div id="panel-screen" class="container d-none py-5">
+    <div class="panel-window mx-auto border-neon shadow-neon p-4 bg-dark-soft" style="max-width: 600px;">
+        <div class="window-header border-bottom border-neon-dim mb-4 d-flex justify-content-between">
+            <span class="text-neon fw-bold small">HARDWARE_BYPASS_v1.0</span>
+            <span id="panel-timer" class="text-danger fw-bold small">45s</span>
+        </div>
+        <h3 class="text-center text-white mb-4">RECONEXIÓN DE NÚCLEO</h3>
+        <p class="text-center text-info x-small mb-5">UNA LOS EXTREMOS DEL MISMO COLOR PARA CERRAR EL CIRCUITO</p>
+        
+        <div class="circuit-board d-flex justify-content-between position-relative px-3" id="cable-container">
+            <div class="nodes-column d-flex flex-column justify-content-around" id="left-nodes"></div>
+            
+            <div class="circuit-grid"></div>
+
+            <div class="nodes-column d-flex flex-column justify-content-around" id="right-nodes"></div>
+        </div>
+
+        <div id="panel-feedback" class="text-center mt-5 h-25px fw-bold"></div>
+    </div>
+</div>
+
+<div id="fail-overlay" class="reboot-overlay d-none">
+    <h1 class="text-danger fw-bold">SISTEMA BLOQUEADO</h1>
 </div>
 
 <script src="script.js"></script>

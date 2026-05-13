@@ -2,70 +2,77 @@
     --neon-green: #39ff14;
     --neon-dim: rgba(57, 255, 20, 0.3);
     --dark-bg: #050505;
-    --dark-soft: #0a0a0a;
 }
 
-body {
-    background-color: var(--dark-bg);
-    font-family: 'Poppins', sans-serif;
-    color: var(--neon-green);
-    overflow: hidden;
-}
+body { background: var(--dark-bg); color: var(--neon-green); font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
-.text-neon { color: var(--neon-green) !important; }
-.text-neon-dim { color: var(--neon-dim) !important; }
-.border-neon { border: 2px solid var(--neon-green) !important; }
-.border-neon-dim { border-color: var(--neon-dim) !important; }
-.bg-dark-soft { background-color: var(--dark-soft); }
-.shadow-neon { box-shadow: 0 0 30px rgba(57, 255, 20, 0.2); }
+/* RESPONSIVE */
+.responsive-txt {
+    font-size: clamp(1.8rem, 8vw, 4.2rem);
+    letter-spacing: clamp(4px, 1.5vw, 12px);
+    word-break: break-all;
+}
 
 .scanlines {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
-    background-size: 100% 4px;
-    z-index: 1000;
-    pointer-events: none;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.05) 50%);
+    background-size: 100% 4px; z-index: 2000; pointer-events: none;
 }
 
-.slide-container, .status-panel, .terminal-container {
-    background: rgba(8, 8, 8, 0.98);
+.border-neon { border: 2px solid var(--neon-green) !important; }
+.border-neon-dim { border-color: var(--neon-dim) !important; }
+.bg-dark-soft { background: #0a0a0a; border-radius: 8px; }
+
+/* VOICE PHASE */
+.voice-window { max-width: 700px; border-radius: 12px; position: relative; }
+.voice-visualizer { position: relative; display: flex; align-items: center; justify-content: center; height: 150px; }
+
+.pulse-circle {
+    position: absolute; width: 120px; height: 120px;
+    border: 3px solid var(--neon-green); border-radius: 50%;
+    animation: pulse 1.5s infinite;
 }
 
-#scramble-text {
-    letter-spacing: 15px;
-    text-shadow: 0 0 20px var(--neon-green);
-    font-family: 'Fira Code', monospace;
-}
-
-.btn-outline-neon {
-    color: var(--neon-green);
-    border: 2px solid var(--neon-green);
-    background: transparent;
-}
-
-.btn-outline-neon:hover {
-    background: var(--neon-green);
-    color: black;
-    box-shadow: 0 0 40px var(--neon-green);
-}
-
-.form-control {
-    background: transparent !important;
-    color: var(--neon-green) !important;
-    border-left: none !important;
-    font-family: 'Fira Code', monospace;
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.6); opacity: 0; }
 }
 
 .reboot-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1100;
+    position: fixed; top:0; left:0; width:100%; height:100%;
+    background: black; display:flex; align-items:center; justify-content:center; z-index: 3000;
 }
 
 .h-25px { height: 25px; }
-.x-small { font-size: 10px; letter-spacing: 1px; }
+.btn-outline-neon { color: var(--neon-green); border: 2px solid var(--neon-green); background: transparent; }
+.btn-outline-neon:hover { background: var(--neon-green); color: black; box-shadow: 0 0 20px var(--neon-green); }
+
+/* PANEL DE CABLES */
+.panel-window { border-radius: 15px; position: relative; }
+.circuit-board { height: 350px; background: rgba(0,0,0,0.4); border: 1px solid #222; border-radius: 10px; }
+
+.node {
+    width: 40px; height: 40px; border-radius: 5px;
+    cursor: pointer; border: 3px solid transparent;
+    transition: all 0.2s; position: relative;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.node::after {
+    content: ''; position: absolute; top: 50%; width: 20px; height: 4px;
+    background: inherit; transform: translateY(-50%);
+}
+
+.node-left::after { right: -20px; }
+.node-right::after { left: -20px; }
+
+.node:hover { transform: scale(1.1); filter: brightness(1.3); }
+.node.selected { border-color: white; box-shadow: 0 0 15px white; }
+.node.connected { opacity: 0.5; cursor: default; filter: grayscale(0.8); }
+
+/* Colores de cables */
+.cable-red { background-color: #ff3131; box-shadow: 0 0 10px #ff3131; }
+.cable-blue { background-color: #3186ff; box-shadow: 0 0 10px #3186ff; }
+.cable-yellow { background-color: #f3ff31; box-shadow: 0 0 10px #f3ff31; }
+.cable-green { background-color: #31ff5e; box-shadow: 0 0 10px #31ff5e; }
+.cable-purple { background-color: #bc31ff; box-shadow: 0 0 10px #bc31ff; }
