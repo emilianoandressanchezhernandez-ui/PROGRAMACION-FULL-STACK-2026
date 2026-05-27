@@ -51,11 +51,157 @@ input [type="text"]:focus {
 
 button {
     padding: 12px 20px;
-    background-color: #3498db;
-    color: #fff;
     border: none;
     border-radius: 6px;
     font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+#btn-agregar {
+    background-color: #3498db;
+    color: white;
+}
+
+#btn-agregar:hover {
+    background-color: #2980b9;
+}
+
+.mensaje-error {
+    background-color: #e74c3c;
+    color: white;
+    padding: 8px 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    display: none;
+}
+
+.clasificacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filtros {
+    display: flex;
+    gap: 5px;
+}
+
+.btn-filtro {
+    padding: 6px 12px;
+    background-color: #f1f5f9;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.btn-filtro.activo {
+    background-color: #334155;
+    color: white;
+}
+
+.btn-eliminar {
+    background-color: #fee2e2;
+    color: #ef4444;
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+.btn-eliminar:hover {
+    background-color: #ef4444;
+    color: white;
+}
+
+.contador {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    background-color: #2c3e50;
+    color: white;
+}
+
+.estilo-caja {
+    flex: 1;
+    font-size: 16px;
+}
+
+.estilo-caja span {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 3px;
+}
+
+.apartado-lista {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+#lista-tareas {
+    list-style: none;
+}
+
+.item-tarea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    transition: background 0.3s;
+}
+
+.texto-tarea {
+    flex: 1;
+    font-size: 16px;
+    word-break: break-word;
+    margin-right: 15px;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+.item-tarea.completada {
+    background-color: #f8fafc;
+}
+.item-tarea.completada .texto-tarea {
+    color: #94a3b8;
+    text-decoration: line-through;
+}
+
+.acciones-tarea {
+    display: flex;
+    gap: 5px;
+}
+
+.btn-completar {
+    background-color: #dcfce7;
+    color: #15803d;
+    padding: 6px 10px;
+    font-size: 14px;
+}
+
+.btn-completar:hover {
+    background-color: #22c55e;
+    color: white;
+}
+
+.item-tarea.completada .btn-completar {
+    background-color: #e2e8f0;
+    color: #64748b;
+}
+
+.btn-eliminar-item {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 6px 10px;
+    font-size: 14px;
+}
+
+.btn-eliminar-item:hover {
+    background-color: #ef4444;
+    color: white;
 }
