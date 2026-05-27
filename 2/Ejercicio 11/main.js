@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Si es válido, ocultamos el error anterior
         errorTarea.style.display = "none";
 
-        // Crear el elemento nuevo (li)
+        // Crear el elemento nuevo
         const nuevaTarea = document.createElement("li");
         nuevaTarea.className = "item-tarea";
 
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // --- EVENTO: BORRAR TODAS LAS TAREAS ---
+    // BORRAR TODAS LAS TAREAS
     btnBorrarTodo.addEventListener("click", () => {
         if (confirm("¿Estás seguro de que deseas eliminar TODAS las tareas?")) {
             listaTareas.innerHTML = ""; // Vaciamos el contenedor de la lista
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // --- EVENTO: MANEJO DE FILTROS ---
+    // botones de filtros
     botonesFiltro.forEach(boton => {
         boton.addEventListener("click", () => {
             // Remover la clase 'activo' de todos los botones de filtro
