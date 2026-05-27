@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 10: DOM JS</title>
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <button id="btn-modo-oscuro" class="btn-oscuro">Modo Oscuro</button>
+  </header>
+
+  <main class="contenedor">
+    <h1 id="titulo-principal">Título sin cambiar</h1>
+
+    <div class="apartado">
+      <section class="tarjeta">
+        <h2>Textos e imagen</h2>
+        <p id="parrafo-cambiar">Parrafo sin cambiar.</p>
+        <div class="contenedor-img">
+          <img id="imagen-cambiar" src="https://picsum.photos/id/10/400/250" alt="Imagen inicial">
+        </div>
+        <div class="grupo-botones">
+          <button id="btn-text-content">Cambiar Título</button>
+          <button id="btn-inner-html">Cambiar Párrafo</button>
+          <button id="btn-cambiar-img">Cambiar Imagen</button>
+        </div>
+      </section>
+
+      <section class="tarjeta">
+        <h2>Elementos Dinámicos</h2>        
+        <div class="grupo-input">
+          <input type="text" id="input-alerta" placeholder="Escribe algo aquí...">
+          <button id="btn-alerta">Mostrar Alerta</button>
+        </div>
+        <div id="texto-clase" class="caja-prueba">
+          Caja de ejemplo
+        </div>              
+        <div class="grupo-botones-en-linea">
+          <button id="btn-add-clase" class="btn-verde">Agregar Clase</button>
+          <button id="btn-remove-clase" class="btn-rojo">Quitar Clase</button>
+        </div>
+        <h3>Lista:</h3>
+        <ul id="lista-agregar">
+          <li>Coso número 1</li>
+        </ul>
+        <button id="btn-agregar-lista" class="btn-ancho">Agregar Ítem</button>
+      </section> 
+    </div>
+
+    <section class="tarjeta formulario-seccion">
+      <h2>Formulario</h2>            
+      <div id="error" class="mensaje-error"></div>
+      <form id="formulario-mejorado">
+        <div class="rellenar">
+          <label for="form-nombre">Nombre:</label>
+          <input type="text" id="form-nombre" placeholder="Tu nombre...">
+        </div>
+        <div class="rellenar">
+          <label for="form-color">Color favorito:</label>
+            <select id="form-color">
+              <option value="">Selecciona un color...</option>
+              <option value="azul">Azul</option>
+              <option value="verde">Verde</option>
+              <option value="rojo">Rojo</option>
+            </select>
+        </div>
+        <div class="rellenar">
+          <label for="form-mensaje">Mensaje:</label>
+          <textarea id="form-mensaje" rows="3" placeholder="Escribe tu mensaje..."></textarea>
+        </div>
+          <button type="submit" class="btn-enviar">Enviar Formulario</button>
+      </form>
+    </section>
+    <section class="resultado-seccion">
+      <h2>Tarjetas Generadas:</h2>
+      <div id="contenedor-tarjetas" class="apartado-tarjetas"></div>
+    </section>
+  </main>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
