@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi colección favorita</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Mi colección favorita</h1>
+        <p>Administra tus videojuegos, películas y series favoritas.</p>
+    </header>
+
+    <main>
+
+        <!-- FORMULARIO -->
+
+        <section class="seccion-formulario">
+            <h2>Agregar elemento</h2>
+
+            <form id="formulario">
+
+                <div class="campo">
+                    <label for="titulo">Título</label>
+                    <input type="text" id="titulo" placeholder="Ingrese un título">
+                </div>
+
+                <div class="campo">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" rows="4" placeholder="Ingrese una descripción"></textarea>
+                </div>
+
+                <div class="campo">
+                    <label for="tipo">Tipo</label>
+                    <select id="tipo">
+                        <option value="">Seleccione un tipo</option>
+                        <option value="Videojuego">Videojuego</option>
+                        <option value="Película">Película</option>
+                        <option value="Serie">Serie</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="estado">Estado</label>
+                    <select id="estado">
+                        <option value="">Seleccione un estado</option>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="En progreso">En progreso</option>
+                        <option value="Terminado">Terminado</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="calificacion">Calificación (1 a 5)</label>
+
+                    <input type="number" id="calificacion" min="1" max="5" placeholder="Ingrese una calificación">
+                </div>
+
+                <div class="campo">
+                    <label for="imagen">URL de imagen</label>
+                    <input type="url" id="imagen" placeholder="https://...">
+                </div>
+
+                <button type="submit" id="btn-agregar">
+                    Agregar elemento
+                </button>
+            </form>
+        </section>
+
+        <!-- informacion -->
+
+        <section class="seccion-info">
+
+            <p id="contador">
+                Total elementos: 0
+            </p>
+
+            <p id="mensaje-vacio">
+                No hay elementos agregados.
+            </p>
+
+        </section>
+
+        <!-- buscador -->
+
+        <section class="seccion-busqueda">
+            <h2>Buscar</h2>
+
+            <input type="search" id="buscador" placeholder="Buscar por título...">
+        </section>
+
+        <!-- filtros por tipo -->
+
+        <section class="seccion-filtros">
+            <h2>Filtrar por tipo</h2>
+
+            <div class="grupo-botones">
+
+                <button id="tipo-todos">
+                    Todos
+                </button>
+
+                <button id="tipo-videojuego">
+                    Videojuegos
+                </button>
+
+                <button id="tipo-pelicula">
+                    Películas
+                </button>
+
+                <button id="tipo-serie">
+                    Series
+                </button>
+            </div>
+        </section>
+
+        <!-- filtros por estado -->
+
+        <section class="seccion-filtros">
+            <h2>Filtrar por estado</h2>
+
+            <div class="grupo-botones">
+
+                <button id="estado-todos">
+                    Todos
+                </button>
+
+                <button id="estado-pendiente">
+                    Pendiente
+                </button>
+
+                <button id="estado-progreso">
+                    En progreso
+                </button>
+
+                <button id="estado-terminado">
+                    Terminado
+                </button>
+            </div>
+        </section>
+
+        <!-- acciones -->
+
+        <section class="seccion-acciones">
+            <button id="btn-ordenar">
+                Ordenar A-Z
+            </button>
+            <button id="btn-vista">
+                Modo oscuro
+            </button>
+        </section>
+
+        <!-- tarjetas -->
+
+        <section>
+            <h2>Mi colección</h2>
+            <div id="contenedor" class="mosaico">
+                <!-- Las tarjetas se crean desde JavaScript -->
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
