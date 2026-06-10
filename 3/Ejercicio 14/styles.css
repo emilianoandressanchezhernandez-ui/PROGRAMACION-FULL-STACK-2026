@@ -1,0 +1,102 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Vegur, 'PT Sans', Verdana, sans-serif;
+    background:#f4f4f4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.contenedor{
+    width:600px;
+    max-width:100%;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,0.15);
+    text-align:center;
+}
+
+h1{
+    margin-bottom:20px;
+}
+
+#btnGato{
+    padding:12px 20px;
+    border:none;
+    background:#3193e4;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+    margin-bottom:20px;
+}
+
+#btnGato:hover{
+    opacity:0.9;
+}
+
+#contenedorGato{
+    min-height:300px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+#contenedorGato img{
+    width:100%;
+    max-width:500px;
+    height:400px;
+    object-fit:cover;
+    border-radius:10px;
+    border:3px solid #ddd;
+}
+
+.botones-voto{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    margin-bottom:20px;
+}
+
+.botones-voto button{
+    padding:12px 18px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    color:white;
+    font-size:15px;
+}
+
+.like{
+    background:#4caf50;
+}
+
+.dislike{
+    background:#f44336;
+}
+
+.like:hover, .dislike:hover{
+    opacity:0.9;
+}
+
+.contadores{
+    margin-bottom:20px;
+}
+
+.contadores p{
+    margin:10px 0;
+    font-size:18px;
+}
+
+#mensaje{
+    min-height:30px;
+    font-weight:bold;
+}
