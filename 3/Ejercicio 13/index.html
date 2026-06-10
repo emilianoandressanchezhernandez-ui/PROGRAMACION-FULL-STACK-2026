@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Chistes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="contenedor">
+        <h1>Generador de chistes con JockerAPI</h1>
+
+        <div class="opciones">
+
+            <label>Categoría:</label>
+            <select id="categoria">
+                <option value="Any">Any</option>
+                <option value="Programming">Programming</option>
+                <option value="Misc">Misc</option>
+                <option value="Pun">Pun</option>
+                <option value="Spooky">Spooky</option>
+                <option value="Christmas">Christmas</option>
+            </select>
+
+            <label>Tipo:</label>
+            <select id="tipo">
+                <option value="any">Cualquiera</option>
+                <option value="single">Single</option>
+                <option value="twopart">Twopart</option>
+            </select>
+
+            <label>Idioma:</label>
+            <select id="idioma">
+                <option value="en">Inglés</option>
+                <option value="es">Español</option>
+            </select>
+
+        </div>
+
+        <div class="filtros">
+
+            <h3>Evitar contenido:</h3>
+
+            <label>
+                <input type="checkbox" value="nsfw">
+                NSFW
+            </label>
+
+            <label>
+                <input type="checkbox" value="religious">
+                Religious
+            </label>
+
+            <label>
+                <input type="checkbox" value="political">
+                Political
+            </label>
+
+            <label>
+                <input type="checkbox" value="racist">
+                Racist
+            </label>
+
+            <label>
+                <input type="checkbox" value="sexist">
+                Sexist
+            </label>
+
+            <label>
+                <input type="checkbox" value="explicit">
+                Explicit
+            </label>
+        </div>
+
+        <button id="btnChiste">
+            Traer chiste
+        </button>
+
+        <div id="mensaje"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
