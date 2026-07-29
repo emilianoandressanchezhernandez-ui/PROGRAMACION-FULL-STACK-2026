@@ -1,7 +1,8 @@
 <?php
 $edad = 18;
 $entrada = true;
-if ($edad >= 18 && $entrada) {
+$estaAcompañado = true;
+if (($edad >= 18 && $entrada) || $estaAcompañado) {
     echo "Acceso permitido";
 } else {
     echo "Acceso denegado";
